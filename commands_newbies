@@ -1,0 +1,6 @@
+> Install django: pip3 install django -U
+> Start django project: django-admin startproject [PROJECT-NAME] [PATH]
+> Run django server: python3 manage.py runserver
+> Create django app: python3 manage.py startapp [APP-NAME] 
+> Applies DB changes: python3 manage.py migrate 
+> Notifies new DB models created/modified: python3 manage.py makemigrations 
