@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -131,3 +132,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# Defines the path for images files taking the current
+# OS context path as a base dir, then join it with
+# the current project path
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# URL in web browser for media files
+MEDIA_URL = "/media/"
