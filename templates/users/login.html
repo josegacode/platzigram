@@ -11,7 +11,7 @@ This block will be filled with its base template file data
 {% block container %}
     {% comment %} error value is given through the views of users {% endcomment %}
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+        <p class="alert alert-danger">{{ error }}</p>
     {% endif %}
 
     {% comment %} The url tag uses the name given in urls files using name attribute {% endcomment %}

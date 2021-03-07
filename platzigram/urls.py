@@ -16,5 +16,6 @@ urlpatterns = [
     path("welcome/<int:age>/<str:name>/", localviews.welcome, name="welcome"),
     path("posts/", postviews.list_posts, name="feed"),
     path("users/login/", userviews.login_view, name="login"),
+    path("users/logout/", userviews.logout_view, name="logout"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # Adds the media static path to the urlpatterns
