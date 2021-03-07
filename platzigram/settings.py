@@ -68,7 +68,8 @@ ROOT_URLCONF = "platzigram.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # Directories where Django can find templates
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -131,7 +132,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# Static path including the os current path
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+# Point where the static files will be serve
 STATIC_URL = "/static/"
+
+# Additional dirs to be find using collectstatic command
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 
 # Defines the path for images files taking the current
 # OS context path as a base dir, then join it with
