@@ -1,0 +1,27 @@
+{% extends "users/base.html" %} 
+{% comment %} Takes the structure of base.html {% endcomment %} 
+
+{% comment %} 
+This block will be filled with its base template file data
+ {% endcomment %}
+{% block head_content %}
+<title>Platzigram sign in</title>
+{% endblock %}
+
+{% block container %}
+    {% comment %} error value is given through the views of users {% endcomment %}
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% comment %} The url tag uses the name given in urls files using name attribute {% endcomment %}
+    <form method="POST" action="{% url "login" %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control mb-2" type="text" placeholder="Username" name="username" />
+            <input class="form-control" type="password" placeholder="Password" name="password" />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+
+    </form>
+{% endblock %}

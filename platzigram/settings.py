@@ -151,3 +151,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # URL in web browser for media files
 MEDIA_URL = "/media/"
+
+# Login url for redirect purposes and login_requiered decorator
+LOGIN_URL = "/users/login/"
