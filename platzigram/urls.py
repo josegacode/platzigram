@@ -17,5 +17,6 @@ urlpatterns = [
     path("posts/", postviews.list_posts, name="feed"),
     path("users/login/", userviews.login_view, name="login"),
     path("users/logout/", userviews.logout_view, name="logout"),
+    path("users/signup/", userviews.signup_view, name="signup"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # Adds the media static path to the urlpatterns
