@@ -7,6 +7,9 @@ from django.db.utils import IntegrityError
 from users.models import Profile
 
 # Create your views here.
+def update_profile(request):
+    return render(request, 'users/update_profile.html')
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
