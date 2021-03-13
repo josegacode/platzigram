@@ -16,14 +16,10 @@ class ProfileCompletionMiddleware:
     def __call__(self, request):
         """ Logic of middleware """
         if not request.user.is_anonymous:
-            try:
+            if not request.user.is_staff:
                 profile = request.user.profile
                 if not profile.picture or not profile.biography:
                     if request.path not in [reverse('update_profile'),reverse('logout')]:
                         return redirect('update_profile')
-            except:
-                print('User has no profile')
-                logout(request)
-                return render(request, 'users/login.html', {'error:': 'User has no profile'})
         response = self.get_response(request)
         return response
