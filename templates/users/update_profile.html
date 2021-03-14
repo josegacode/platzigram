@@ -18,9 +18,9 @@
             {% csrf_token %}
                 
 
-            {% if form.errors %}
+            {% comment %} {% if form.errors %}
                 <p class="alert alert-danger">{{ forms.errors }}</p>
-            {% endif %}
+            {% endif %} {% endcomment %}
                 <div class='media'>
                 {% if profile.picture %}
                     <img src="{{ profile.picture.url }}" class="rounded-circle" height="50"/>
@@ -29,7 +29,7 @@
                 {% endif %}
                     <div class="media-body">
                         <h5 class="ml-4">@{{ user.username }} | {{user.get_full_name}}</h5>
-                        <p class="ml-4"><input type="file" name="picture" required="true"></p>
+                        <p class="ml-4"><input type="file" name="picture" ></p>
                     </div>
                 </div>
 
@@ -37,12 +37,32 @@
 
                 <div class="form-group">
                     <label>Website</label>
-                    <input class="form-control" type="url" name="website" placeholder="Website"/>
+                    <input 
+                        class="form-control {% if form.website.errors %} is-invalid {% endif %}"
+                        type="text" 
+                        name="website" 
+                        placeholder="Website"
+                        value="{% if form.website.errors %} {{ form.website.value }} {% else %} {{ profile.website }} {% endif %}"
+                        />
+                        <div class="invalid-feedback">
+                        {% for error in form.website.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        </div>
                 </div>
             
                 <div class="form-group">
                     <label>Biography</label>
-                    <textarea class="form-control" name="biography">{{ profile.biography }}</textarea>
+                    <textarea 
+                        class="form-control {% if form.biography.errors %} is-invalid {% endif %}" 
+                        name="biography"
+                    >{% if form.biography.errors %} {{ form.biography.value }} {% else %} {{ profile.biography}} {% endif %}
+                    </textarea>
+                    <div class="invalid-feedback">
+                    {% for error in form.biography.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    </div>
                 </div>
 
                 <div class="form-group">
